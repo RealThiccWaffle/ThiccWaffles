@@ -22,31 +22,36 @@ priorityNumber = st.slider("Number of priority excersizes: ", 0, 4)
 secondaryNumber = st.slider("Number of secondary exersizes: ", 0, 4)
 def randomizer(excersize, priority, secondary):
     if excersize == "chest":
-       x = pd.DataFrame(chestPriority)
        if priority > 0:
+            x = pd.DataFrame(chestPriority)
             y = x.sample(n = priority)
             st.write(y)
-       a = pd.DataFrame(chestSecondary)
-       b = a.sample(n = secondary)
-       st.write(b)
+       if secondary > 0:
+            a = pd.DataFrame(chestSecondary)
+            b = a.sample(n = secondary)
+            st.write(b)
         #st.write(*random.sample(chestPriority,priority), sep = "\n")
         #st.write(*random.sample(chestSecondary,secondary))
     elif excersize == "leg":
-       x = pd.DataFrame(legPriority)
-       y = x.sample(n = priority)
-       st.write(y)
-       a = pd.DataFrame(legSecondary)
-       b = a.sample(n = secondary)
-       st.write(b)
+       if priority > 0:
+            x = pd.DataFrame(legPriority)
+            y = x.sample(n = priority)
+            st.write(y)
+       if secondary > 0:
+            a = pd.DataFrame(legSecondary)
+            b = a.sample(n = secondary)
+            st.write(b)
         #st.write(*random.sample(legPriority,priority), sep = "\n")
         #st.write(*random.sample(legSecondary,secondary), sep = "\n")
     elif excersize == "back":
-       x = pd.DataFrame(backPriority)
-       y = x.sample(n = priority)
-       st.write(y)
-       a = pd.DataFrame(backSecondary)
-       b = a.sample(n = secondary)
-       st.write(b)
+       if priority > 0:
+            x = pd.DataFrame(backPriority)
+            y = x.sample(n = priority)
+            st.write(y)
+       if secondary > 0:
+            a = pd.DataFrame(backSecondary)
+            b = a.sample(n = secondary)
+            st.write(b)
         #st.write(*random.sample(backPriority,priority), sep = "\n")
         #st.write(*random.sample(backSecondary,secondary), sep = "\n")
     elif excersize == "tricep":
