@@ -28,7 +28,7 @@ def randomizer(excersize, priority, secondary):
        y = x.sample(n = 4)
        st.write(y)
        a = pd.DataFrame(chestSecondary)
-       b = a.sample(n = secondary)
+       b = a.sample(n = int(secondary))
        st.write(b)
         #st.write(*random.sample(chestPriority,priority), sep = "\n")
         #st.write(*random.sample(chestSecondary,secondary))
