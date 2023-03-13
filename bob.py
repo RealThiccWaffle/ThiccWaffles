@@ -33,7 +33,6 @@ def randomizer(excersize, priority, secondary):
         #st.write(*random.sample(chestPriority,priority), sep = "\n")
         #st.write(*random.sample(chestSecondary,secondary))
     elif excersize == "leg":
-       if priority > 0:
             x = pd.DataFrame(legPriority)
             y = x.sample(n = 1)
             st.write(y)
