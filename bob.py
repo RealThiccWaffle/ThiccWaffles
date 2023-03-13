@@ -5,7 +5,7 @@ import random
 # Let's Get Big
 """
 chestPriority = {"Chest Primary": ["Barbell bench press 5x12","incline dumbbell press 5x12","Barbell incline dumbell press 5x12", "Dumbbell bench press 5x12", "Decline Dumbell press 5x12", "Decline barbell press 5x12"]}
-chestSecondary = {"Chest Secondary": ["Chest Secondary 1","Chest Secondary 2","Chest Secondary 3","Chest Secondary 4","Chest Secondary 5","Chest Secondary 6","Chest Secondary 7","Chest Secondary 8","Chest Secondary 9","Chest Secondary 10","Chest Secondary 11","Chest Secondary 12","Chest Secondary 13","Chest Secondary 14","Chest Secondary 15","Chest Secondary 16","Chest Secondary 17","Chest Secondary 18"]}
+chestSecondary = {"Chest Secondary": ["Decline flys 4x12","Incline flys 4x12","Flys 4x12","Dips 6x12","Band push-ups 4x12","Straight bar dips 6x12"]}
 legPriority = {"Leg Primary": ["Leg Priority 1","Leg Priority 2","Leg Priority 3","Leg Priority 4"]}
 legSecondary = {"Leg Secondary":["Leg Secondary 1","Leg Secondary 2","Leg Secondary 3","Leg Secondary 4","Leg Secondary 5","Leg Secondary 6","Leg Secondary 7","Leg Secondary 8","Leg Secondary 9","Leg Secondary 10","Leg Secondary 11","Leg Secondary 12","Leg Secondary 13","Leg Secondary 14","Leg Secondary 15","Leg Secondary 16","Leg Secondary 17","Leg Secondary 18","Leg Secondary 19"]}
 backPriority = {"Back Primary":["Back Priority 1","Back Priority 2","Back Priority 3","Back Priority 4","Back Priority 5",]}
