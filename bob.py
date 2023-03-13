@@ -23,10 +23,11 @@ secondaryNumber = st.slider("Number of secondary exersizes: ", 0, 4)
 def randomizer(excersize, priority, secondary):
     if excersize == "chest":
        x = pd.DataFrame(chestPriority)
-       y = x.sample(n = 0, priority)
-       st.write(y)
+        if priorityNumber > 0:
+            y = x.sample(priority)
+            st.write(y)
        a = pd.DataFrame(chestSecondary)
-       b = a.sample(n = 0, secondary)
+       b = a.sample(secondary)
        st.write(b)
         #st.write(*random.sample(chestPriority,priority), sep = "\n")
         #st.write(*random.sample(chestSecondary,secondary))
