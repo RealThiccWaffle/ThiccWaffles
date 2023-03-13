@@ -67,5 +67,5 @@ def randomizer(excersize, priority, secondary):
       #st.write(*random.sample(bicep, 4), sep = "\n"
     else:
        st.write("waffles")
-st.write("This is your primary workout", randomizer(todaysExcersize, priorityNumber, secondaryNumber))
+st.write(randomizer(todaysExcersize, priorityNumber, secondaryNumber))
 st.write(randomizer(todaysSecondaryExcersize, 4, 4))
