@@ -18,7 +18,7 @@ core = {"Core Workout":["core 1", "core 2", "core 3", "core 4", "core 5"]}
 
 todaysExcersize = st.radio("What we doing today? Chest, leg, back? ", ('chest', 'back', 'leg', 'none'))
 todaysSecondaryExcersize = st.radio("Do you want to add these to your workout", ('tricep', 'bicep', 'core', 'none'))
-priorityNumber = st.slider("Number of priority excersizes: ", 0, 4)
+priorityNumber = st.slider("Number of priority excersizes for chest and back: ", 0, 4)
 secondaryNumber = st.slider("Number of secondary exersizes: ", 0, 4)
 def randomizer(excersize, priority, secondary):
     if excersize == "chest":
@@ -35,7 +35,7 @@ def randomizer(excersize, priority, secondary):
     elif excersize == "leg":
        if priority > 0:
             x = pd.DataFrame(legPriority)
-            y = x.sample(n = priority)
+            y = x.sample(n = 1)
             st.write(y)
        if secondary > 0:
             a = pd.DataFrame(legSecondary)
