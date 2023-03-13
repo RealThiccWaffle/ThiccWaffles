@@ -29,7 +29,7 @@ def randomizer(excersize, priority, secondary):
        st.write(y)
        a = pd.DataFrame(chestSecondary)
        b = a.sample(n = secondary)
-       st.write(a)
+       st.write(b)
         #st.write(*random.sample(chestPriority,priority), sep = "\n")
         #st.write(*random.sample(chestSecondary,secondary))
     elif excersize == "leg":
