@@ -70,5 +70,5 @@ def randomizer(excersize, priority, secondary):
       #st.write(*random.sample(bicep, 4), sep = "\n"
     else:
        st.write("waffles")
-st.write(randomizer(todaysExcersize, priorityNumber, secondaryNumber))
-st.write(randomizer(todaysSecondaryExcersize, 0, 0))
+st.markdown(randomizer(todaysExcersize, priorityNumber, secondaryNumber))
+st.markdown(randomizer(todaysSecondaryExcersize, 0, 0))
