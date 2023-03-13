@@ -4,7 +4,7 @@ import random
 """
 # Let's Get Big
 """
-chestPriority = {"Chest Primary": ["Barbell bench press 5x12","incline dumbbell press 5x12","Barbell incline dumbell press 5x12", "Dumbbell bench press 5x12", "Decline Dumbell press 5x12", "Decline barbell press 5x12"]}
+chestPriority = {"Chest Primary": ["Barbell bench press 5x12", "incline dumbbell press 5x12", "Barbell incline dumbell press 5x12", "Dumbbell bench press 5x12", "Decline Dumbell press 5x12", "Decline barbell press 5x12"]}
 chestSecondary = {"Chest Secondary": ["Decline flys 4x12","Incline flys 4x12","Flys 4x12","Dips 6x12","Band push-ups 4x12","Straight bar dips 6x12"]}
 legPriority = {"Leg Primary": ["Leg Priority 1","Leg Priority 2","Leg Priority 3","Leg Priority 4"]}
 legSecondary = {"Leg Secondary":["Leg Secondary 1","Leg Secondary 2","Leg Secondary 3","Leg Secondary 4","Leg Secondary 5","Leg Secondary 6","Leg Secondary 7","Leg Secondary 8","Leg Secondary 9","Leg Secondary 10","Leg Secondary 11","Leg Secondary 12","Leg Secondary 13","Leg Secondary 14","Leg Secondary 15","Leg Secondary 16","Leg Secondary 17","Leg Secondary 18","Leg Secondary 19"]}
