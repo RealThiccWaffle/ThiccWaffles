@@ -20,12 +20,11 @@ todaysExcersize = st.radio("What we doing today? Chest, leg, back? ", ('chest', 
 todaysSecondaryExcersize = st.radio("Do you want to add these to your workout", ('tricep', 'bicep', 'core', 'none'))
 priorityNumber = st.slider("Number of priority excersizes: ", 0, 4)
 secondaryNumber = st.slider("Number of secondary exersizes: ", 0, 4)
-
-
+bf = int(priorityNumber)
 def randomizer(excersize, priority, secondary):
     if excersize == "chest":
        x = pd.DataFrame(chestPriority)
-       y = x.sample(n = 4)
+       y = x.sample(n = bf)
        st.write(y)
        a = pd.DataFrame(chestSecondary)
        b = a.sample(n = int(secondary))
@@ -67,5 +66,5 @@ def randomizer(excersize, priority, secondary):
       #st.write(*random.sample(bicep, 4), sep = "\n"
     else:
        st.write("waffles")
-st.write(randomizer(todaysExcersize, priorityNumber, secondaryNumber))
+st.write(randomizer(todaysExcersize, bf, secondaryNumber))
 st.write(randomizer(todaysSecondaryExcersize, 4, 4))
