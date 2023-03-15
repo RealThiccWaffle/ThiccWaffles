@@ -22,37 +22,38 @@ priorityNumber = st.slider("Number of priority excersizes for chest and back: ",
 secondaryNumber = st.slider("Number of secondary exersizes: ", 0, 4)
 def randomizer(excersize, priority, secondary):
     if excersize == "chest":
-      # if priority > 0:
-           # x = pd.DataFrame(chestPriority)
-           # y = x.sample(n = priority)
-            #st.write(y)
-       #if secondary > 0:
-            #a = pd.DataFrame(chestSecondary)
-            #b = a.sample(n = secondary)
-            #st.write(b)
-        st.markdown(*random.sample(chestPriority,priority), sep = "\n")
-        st.markdown(*random.sample(chestSecondary,secondary))
+      if priority > 0:
+          x = pd.DataFrame(chestPriority)
+          y = x.sample(n = priority)
+          st.write(y)
+      if secondary > 0:
+          a = pd.DataFrame(chestSecondary)
+          b = a.sample(n = secondary)
+          st.write(b)
+        #st.markdown(*random.sample(chestPriority,priority), sep = "\n")
+        #st.markdown(*random.sample(chestSecondary,secondary))
+        
     elif excersize == "leg":
-      # x = pd.DataFrame(legPriority)
-       #y = x.sample(n = 1)
-       #st.write(y)
-       #if secondary > 0:
-            #a = pd.DataFrame(legSecondary)
-           # b = a.sample(n = secondary)
-            #st.write(b)
-        st.markdown(*random.sample(legPriority,priority), sep = "\n")
-        st.markdown(*random.sample(legSecondary,secondary), sep = "\n")
+      x = pd.DataFrame(legPriority)
+       y = x.sample(n = 1)
+       st.write(y)
+       if secondary > 0:
+          a = pd.DataFrame(legSecondary)
+          b = a.sample(n = secondary)
+          st.write(b)
+        #st.markdown(*random.sample(legPriority,priority), sep = "\n")
+        #st.markdown(*random.sample(legSecondary,secondary), sep = "\n")
     elif excersize == "back":
-       #if priority > 0:
-            #x = pd.DataFrame(backPriority)
-            #y = x.sample(n = priority)
-            #st.write(y)
-       #if secondary > 0:
-            #a = pd.DataFrame(backSecondary)
-            #b = a.sample(n = secondary)
-            #st.write(b)
-        st.markdown(*random.sample(backPriority,priority), sep = "\n")
-        st.markdownq(*random.sample(backSecondary,secondary), sep = "\n")
+       if priority > 0:
+          x = pd.DataFrame(backPriority)
+          y = x.sample(n = priority)
+          st.write(y)
+        if secondary > 0:
+          a = pd.DataFrame(backSecondary)
+          b = a.sample(n = secondary)
+          st.write(b)
+        #st.markdown(*random.sample(backPriority,priority), sep = "\n")
+        #st.markdownq(*random.sample(backSecondary,secondary), sep = "\n")
     elif excersize == "tricep":
        x = pd.DataFrame(tricep)
        y = x.sample(n = 4)
