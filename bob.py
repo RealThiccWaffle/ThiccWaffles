@@ -35,23 +35,23 @@ def randomizer(excersize, priority, secondary):
         
     elif excersize == "leg":
       x = pd.DataFrame(legPriority)
-       y = x.sample(n = 1)
-       st.write(y)
-       if secondary > 0:
-          a = pd.DataFrame(legSecondary)
-          b = a.sample(n = secondary)
-          st.write(b)
+      y = x.sample(n = 1)
+      st.write(y)
+      if secondary > 0:
+        a = pd.DataFrame(legSecondary)
+        b = a.sample(n = secondary)
+        st.write(b)
         #st.markdown(*random.sample(legPriority,priority), sep = "\n")
         #st.markdown(*random.sample(legSecondary,secondary), sep = "\n")
     elif excersize == "back":
-       if priority > 0:
-          x = pd.DataFrame(backPriority)
-          y = x.sample(n = priority)
-          st.write(y)
-        if secondary > 0:
-          a = pd.DataFrame(backSecondary)
-          b = a.sample(n = secondary)
-          st.write(b)
+      if priority > 0:
+        x = pd.DataFrame(backPriority)
+        y = x.sample(n = priority)
+        st.write(y)
+      if secondary > 0:
+        a = pd.DataFrame(backSecondary)
+        b = a.sample(n = secondary)
+        st.write(b)
         #st.markdown(*random.sample(backPriority,priority), sep = "\n")
         #st.markdownq(*random.sample(backSecondary,secondary), sep = "\n")
     elif excersize == "tricep":
