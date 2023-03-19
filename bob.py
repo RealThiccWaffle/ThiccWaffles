@@ -1,22 +1,4 @@
 
-Bodybuilding Workout Generator
-
-Model: Default (GPT-3.5)
-
-RealThiccWaffle
-Create a streamlit python app with goal of being used on mobile, it should be able to output a workout woth the selected training type and muscle type. You should include all major muscle types. Use knowledge of bodybuilding training models to determine the random workout. Make it look super easy to use. And add a user login with no password, so people can hold data about their main lift max and reps and so they can see it in a dataframe graph
-
-Sure, I can help you create a streamlit python app with the goal of being used on mobile. Here's a basic outline of what the app will do:
-
-Display a welcome message and ask the user to select their training type (strength or hypertrophy) and muscle group.
-Generate a random workout based on the selected training type and muscle group using bodybuilding training models.
-Display the workout to the user in an easy-to-read format.
-Allow the user to log in with a unique username and store their main lift max and reps in a database.
-Display the user's data in a dataframe and graph so they can easily track their progress over time.
-Here's some sample code to get you started:
-
-python
-Copy code
 import streamlit as st
 import pandas as pd
 import random
