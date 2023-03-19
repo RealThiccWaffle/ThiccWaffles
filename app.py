@@ -1,4 +1,5 @@
 import streamlit as st
+import random
 
 # Define workout exercises and their respective muscle groups
 exercises = {
@@ -17,12 +18,17 @@ sets_and_reps = {
 }
 
 # Create Streamlit app
+st.set_page_config(page_title="Hypertrophy Workout Generator", layout="wide")
 st.title("Hypertrophy Workout Generator")
 
-# Get user inputs
-training_type = st.selectbox("Choose training type:", ["Split", "Full Body"])
-muscle_group = st.selectbox("Choose a muscle group:", list(exercises.keys()))
-fitness_level = st.selectbox("Choose your fitness level:", list(sets_and_reps.keys()))
+# Set up columns for input
+col1, col2, col3 = st.columns(3)
+with col1:
+    training_type = st.selectbox("Training type:", ["Split", "Full Body"])
+with col2:
+    muscle_group = st.selectbox("Muscle group:", list(exercises.keys()))
+with col3:
+    fitness_level = st.selectbox("Fitness level:", list(sets_and_reps.keys()))
 
 # Generate workout
 st.header("Generated Workout")
@@ -31,10 +37,12 @@ sets, reps = sets_and_reps[fitness_level]
 
 if training_type == "Split":
     st.write(f"**Target Muscle Group**: {muscle_group}")
-    for exercise in exercises[muscle_group]:
+    selected_exercises = random.sample(exercises[muscle_group], k=min(3, len(exercises[muscle_group])))
+    for exercise in selected_exercises:
         st.write(f"{exercise}: {sets} sets of {reps} reps")
 else:
     for muscle, exercise_list in exercises.items():
         st.write(f"**Target Muscle Group**: {muscle}")
-        for exercise in exercise_list[:2]:  # Select the first two exercises for each muscle group
+        selected_exercises = random.sample(exercise_list, k=min(2, len(exercise_list)))
+        for exercise in selected_exercises:
             st.write(f"{exercise}: {sets} sets of {reps} reps")
