@@ -72,23 +72,23 @@ def app():
 
     # Allow the user to enter their main lift max and reps
     st.write('Enter your main lift max and reps:')
-col1, col2 = st.columns(2)
-with col1:
-    max_lift = st.number_input('Max Lift', value=user_data['Max Lift'].values[0], step=5)
-with col2:
-    max_reps = st.number_input('Max Reps', value=user_data['Max Reps'].values[0], step=5)
-
-# Update the user's data
-user_db.loc[user_data.index[0], 'Max Lift'] = max_lift
-user_db.loc[user_data.index[0], 'Max Reps'] = max_reps
-
-# Display the user's data in a dataframe and graph
-st.write('Your data:')
-st.write(user_db)
-
-# Show a graph of the user's progress over time
-user_history = user_db[user_db['Username'] == st.session_state['username']]
-user_history = user_history[['Max Lift', 'Max Reps']]
-user_history['Date'] = pd.to_datetime(user_db.index)
-user_history = user_history.set_index('Date')
-st.line_chart(user_history, use_container_width=True)
+    col1, col2 = st.columns(2)
+    with col1:
+        max_lift = st.number_input('Max Lift', value=user_data['Max Lift'].values[0], step=5)
+    with col2:
+        max_reps = st.number_input('Max Reps', value=user_data['Max Reps'].values[0], step=5)
+    
+    # Update the user's data
+    user_db.loc[user_data.index[0], 'Max Lift'] = max_lift
+    user_db.loc[user_data.index[0], 'Max Reps'] = max_reps
+    
+    # Display the user's data in a dataframe and graph
+    st.write('Your data:')
+    st.write(user_db)
+    
+    # Show a graph of the user's progress over time
+    user_history = user_db[user_db['Username'] == st.session_state['username']]
+    user_history = user_history[['Max Lift', 'Max Reps']]
+    user_history['Date'] = pd.to_datetime(user_db.index)
+    user_history = user_history.set_index('Date')
+    st.line_chart(user_history, use_container_width=True)
