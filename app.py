@@ -1,90 +1,90 @@
 import streamlit as st
 import random
-import itertools
 
-# Define workout exercises and their respective muscle groups
-exercises = {
-    # ...
-}
+def generate_workout(training_type, target_muscle, fitness_level, add_extras):
+    workouts = {
+        "split": {
+            "chest": {
+                "beginner": [("Bench Press", 3, 8), ("Push-ups", 3, 12)],
+                "intermediate": [("Bench Press", 4, 10), ("Incline Bench Press", 3, 8), ("Push-ups", 3, 15)],
+                "advanced": [("Bench Press", 5, 10), ("Incline Bench Press", 4, 8), ("Decline Bench Press", 4, 8), ("Dips", 3, 12)],
+            },
+            "back": {
+                "beginner": [("Pull-ups", 3, 5), ("Bent-over Rows", 3, 8)],
+                "intermediate": [("Pull-ups", 4, 8), ("Bent-over Rows", 3, 10), ("Seated Rows", 3, 10)],
+                "advanced": [("Pull-ups", 5, 10), ("Bent-over Rows", 4, 10), ("Seated Rows", 4, 10), ("T-bar Rows", 4, 10)],
+            },
+            "quads": {
+                "beginner": [("Squats", 3, 8), ("Lunges", 3, 8)],
+                "intermediate": [("Squats", 4, 10), ("Lunges", 3, 10), ("Leg Press", 3, 10)],
+                "advanced": [("Squats", 5, 10), ("Lunges", 4, 10), ("Leg Press", 4, 10), ("Hack Squat", 4, 10)],
+            },
+            "hamstrings": {
+                "beginner": [("Romanian Deadlift", 3, 8), ("Lying Leg Curls", 3, 8)],
+                "intermediate": [("Romanian Deadlift", 4, 10), ("Lying Leg Curls", 3, 10), ("Seated Leg Curls", 3, 10)],
+                "advanced": [("Romanian Deadlift", 5, 10), ("Lying Leg Curls", 4, 10), ("Seated Leg Curls", 4, 10), ("Stiff Leg Deadlift", 4, 10)],
+            },
+            "biceps": {
+                "beginner": [("Bicep Curls", 3, 8), ("Hammer Curls", 3, 8)],
+                "intermediate": [("Bicep Curls", 4, 10), ("Hammer Curls", 3, 10), ("Concentration Curls", 3, 10)],
+                "advanced": [("Bicep Curls", 5, 10), ("Hammer Curls", 4, 10), ("Concentration Curls", 4, 10), ("Preacher Curls", 4, 10)],
+            },
+            "triceps": {
+                "beginner": [("Tricep Dips", 3, 8), ("Tricep Pushdowns", 3, 8)],
+                "intermediate": [("Tricep Dips", 4, 10), ("Tricep Pushdowns", 3, 10), ("Skull Crushers", 3, 10)],
+                "advanced": [("Tricep Dips", 5, 10), ("Tricep Pushdowns", 4, 10), ("Skull Crushers", 4, 10), ("Close-grip Bench Press", 4, 10)],
+            },
+            "shoulders": {
+                "beginner": [("Shoulder Press", 3, 8), ("Lateral Raises", 3, 8)],
+                "intermediate": [("Shoulder Press", 4, 10), ("Lateral Raises", 3, 10), ("Front Raises", 3, 10)],
+                "advanced": [("Shoulder Press", 5, 10), ("Lateral Raises", 4, 10), ("Front Raises", 4, 10), ("Bent-over Reverse Fly", 4, 10)],
+            },
+            "calves": {
+                "beginner": [("Standing Calf Raises", 3, 12), ("Seated Calf Raises", 3, 12)],
+                "intermediate": [("Standing Calf Raises", 4, 15), ("Seated Calf Raises", 3, 15), ("Leg Press Calf Raises", 3, 15)],
+                "advanced": [("Standing Calf Raises", 5, 15), ("Seated Calf Raises", 4, 15), ("Leg Press Calf Raises", 4, 15), ("Donkey Calf Raises", 4, 15)],
+            },
+        },
+        "full_body": {
+            "all": {
+                "beginner": [("Squats", 3, 8), ("Bench Press", 3, 8), ("Bent-over Rows", 3, 8), ("Shoulder Press", 3, 8), ("Bicep Curls", 3, 8), ("Tricep Dips", 3, 8), ("Standing Calf Raises", 3, 12)],
+                "intermediate": [("Squats", 4, 10), ("Bench Press", 4, 10), ("Bent-over Rows", 4, 10), ("Shoulder Press", 4, 10), ("Bicep Curls", 4, 10), ("Tricep Dips", 4, 10), ("Standing Calf Raises", 4, 15)],
+                "advanced": [("Squats", 5, 10), ("Bench Press", 5, 10), ("Bent-over Rows", 5, 10), ("Shoulder Press", 5, 10), ("Bicep Curls", 5, 10), ("Tricep Dips", 5, 10), ("Standing Calf Raises", 5, 15)],
+            }
+        }
+    }
 
-# Define sets and reps for different fitness levels
-sets_and_reps = {
-    "Beginner": (3, (10, 12)),
-    "Intermediate": (4, (8, 10)),
-    "Advanced": (5, (6, 8)),
-}
+    extra_workouts = {
+        "triceps": [("Tricep Dips", 3, 10), ("Tricep Pushdowns", 3, 10), ("Skull Crushers", 3, 10)],
+        "biceps": [("Bicep Curls", 3, 10), ("Hammer Curls", 3, 10), ("Concentration Curls", 3, 10)],
+        "core": [("Planks", 3, 30), ("Russian Twists", 3, 20), ("Leg Raises", 3, 15)]
+    }
 
-# Create Streamlit app
-st.set_page_config(page_title="Hypertrophy Workout Generator", layout="wide")
+    if training_type == "full_body":
+        workout = workouts[training_type]["all"][fitness_level]
+    else:
+        workout = workouts[training_type][target_muscle][fitness_level]
+    
+    random.shuffle(workout)
+
+    if add_extras != "None":
+        workout.extend(random.sample(extra_workouts[add_extras], 2))
+
+    return workout
+
 st.title("Hypertrophy Workout Generator")
 
-# Set up columns for input
-col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
-with col1:
-    training_type = st.selectbox("Training type:", ["Split", "Full Body"])
-with col2:
-    muscle_group = st.selectbox("Muscle group:", list(exercises.keys()))
-with col3:
-    fitness_level = st.selectbox("Fitness level:", list(sets_and_reps.keys()))
-with col4:
-    extra_exercises_options = {"None": None, "Bicep": "Arms", "Tricep": "Arms", "Core": "Core"}
-    extra_exercises = st.selectbox("Add extra exercises:", list(extra_exercises_options.keys()))
+training_type = st.selectbox("Choose a training type:", ["split", "full_body"])
+if training_type == "split":
+    target_muscle = st.selectbox("Choose a target muscle:", ["chest", "back", "quads", "hamstrings", "biceps", "triceps", "shoulders", "calves"])
+else:
+    target_muscle = "all"
+fitness_level = st.selectbox("Choose your fitness level:", ["beginner", "intermediate", "advanced"])
+add_extras = st.selectbox("Add extra exercises (optional):", ["None", "triceps", "biceps", "core"])
 
-def generate_superset(exercises, muscle_group, num_supersets=2):
-    selected_exercises = random.sample(exercises[muscle_group], k=min(num_supersets, len(exercises[muscle_group])))
-    superset = " / ".join(selected_exercises)
-    return superset
-
-# Button to start generating the workout
 if st.button("Generate Workout"):
-    # Generate workout
-    st.header("Generated Workout")
-
-    sets, rep_range = sets_and_reps[fitness_level]
-
-    if training_type == "Split":
-        st.write(f"**Target Muscle Group**: {muscle_group}")
-        selected_exercises = random.sample(exercises[muscle_group], k=min(4, len(exercises[muscle_group])))
-
-        for i, exercise in enumerate(selected_exercises):
-            reps = random.randint(rep_range[0], rep_range[1])
-
-            if i % 2 == 0 and len(selected_exercises) - i > 1:
-                superset = generate_superset(exercises, muscle_group)
-                st.write(f"Superset: {superset}: {sets} sets of {reps} reps")
-            elif i % 2 != 0:
-                pass  # Skip printing because the exercise is part of a superset
-            else:
-                st.write(f"{exercise}: {sets} sets of {reps} reps")
-
-            if i == len(selected_exercises) - 1 and len(selected_exercises) % 2 != 0:
-                st.write(f"Drop set: {exercise}: {sets} sets of {reps} reps (perform drop sets on the last two sets)")
-
-        if extra_exercises != "None":
-            st.write("**Extra Exercises**")
-            selected_extra_exercises = random.sample(
-                exercises[extra_exercises_options[extra_exercises]], k=min(2, len(exercises[extra_exercises_options[extra_exercises]]))
-            )
-            for exercise in selected_extra_exercises:
-                reps = random.randint(rep_range[0], rep_range[1])
-                st.write(f"{exercise}: {sets} sets of {reps} reps")
-
-    else:
-        for muscle, exercise_list in exercises.items():
-            st.write(f"**Target Muscle Group**: {muscle}")
-            selected_exercises = random.sample(exercise_list, k=min(3, len(exercise_list)))
-
-            for i, exercise in enumerate(selected_exercises):
-                reps = random.randint(rep_range[0], rep_range[1])
-
-                if i % 2 == 0 and len(selected_exercises) - i > 1:
-                    superset = generate_superset(exercises, muscle_group)
-                    st.write(f"Superset: {superset}: {sets} sets of {reps} reps")
-                elif i % 2 != 0:
-                    pass  # Skip printing because the exercise is part of a superset
-                else:
-                    st.write(f"{exercise}: {sets} sets of {reps} reps")
-
-                if i == len(selected_exercises) - 1 and len(selected_exercises) % 2 != 0:
-                    st.write(f"Drop set: {exercise}: {sets} sets of {reps} reps (perform drop sets on the last two sets)")
+    workout = generate_workout(training_type, target_muscle, fitness_level, add_extras)
+    st.write(f"Your {training_type} workout for {target_muscle} (Fitness Level: {fitness_level.capitalize()}):")
+    for exercise, sets, reps in workout:
+        st.write(f"{exercise}: {sets} sets x {reps} reps")
 
