@@ -1,6 +1,6 @@
 import streamlit as st
 import random
-
+Import time
 def generate_workout(training_type, target_muscle, fitness_level, add_extras):
     workouts = {
         "split": {
@@ -88,3 +88,24 @@ if st.button("Generate Workout"):
     for exercise, sets, reps in workout:
         st.write(f"{exercise}: {sets} sets x {reps} reps")
 
+
+if st.button("Generate Workout"):
+    workout = generate_workout(training_type, target_muscle, fitness_level, add_extras)
+    st.write(f"Your {training_type} workout for {target_muscle} (Fitness Level: {fitness_level.capitalize()}):")
+    for exercise, sets, reps in workout:
+        st.write(f"{exercise}: {sets} sets x {reps} reps")
+
+    rest_time = st.slider("Choose your rest time between sets (in seconds):", 30, 180, 60)
+
+    if st.button("Start Workout Timer"):
+        for exercise, sets, reps in workout:
+            for current_set in range(1, sets + 1):
+                st.write(f"Performing {exercise} - Set {current_set} of {sets}: {reps} reps")
+                st.write(f"Rest for {rest_time} seconds.")
+                time_remaining = rest_time
+                while time_remaining > 0:
+                    st.write(f"{time_remaining} seconds remaining.")
+                    time.sleep(1)
+                    time_remaining -= 1
+                    st.write("")  # Clear the line with the previous remaining time
+                st.write("Next set/exercise")
