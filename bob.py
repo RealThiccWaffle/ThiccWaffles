@@ -1,75 +1,101 @@
+
+Bodybuilding Workout Generator
+
+Model: Default (GPT-3.5)
+
+RealThiccWaffle
+Create a streamlit python app with goal of being used on mobile, it should be able to output a workout woth the selected training type and muscle type. You should include all major muscle types. Use knowledge of bodybuilding training models to determine the random workout. Make it look super easy to use. And add a user login with no password, so people can hold data about their main lift max and reps and so they can see it in a dataframe graph
+
+Sure, I can help you create a streamlit python app with the goal of being used on mobile. Here's a basic outline of what the app will do:
+
+Display a welcome message and ask the user to select their training type (strength or hypertrophy) and muscle group.
+Generate a random workout based on the selected training type and muscle group using bodybuilding training models.
+Display the workout to the user in an easy-to-read format.
+Allow the user to log in with a unique username and store their main lift max and reps in a database.
+Display the user's data in a dataframe and graph so they can easily track their progress over time.
+Here's some sample code to get you started:
+
+python
+Copy code
 import streamlit as st
 import pandas as pd
 import random
-"""
-# Let's Get Big
-"""
-chestPriority = {"Chest Primary": ["Barbell bench press 5x12", "incline dumbbell press 5x12", "Barbell incline dumbell press 5x12", "Dumbbell bench press 5x12", "Decline Dumbell press 5x12", "Decline barbell press 5x12"]}
-chestSecondary = {"Chest Secondary": ["Decline flys 4x12","Incline flys 4x12","Flys 4x12","Dips 6x12","Band push-ups 4x12","Straight bar dips 6x12"]}
-legPriority = {"Leg Primary": ["Back Squat 5x12","","Front Squat 5x12"]}
-legSecondary = {"Leg Secondary":["Lunges 5x12","Leg extensions 4x12","Calf raises 4x12","Reverse lunge 4x12","Split squats 4x12","Step-up 4x12"]}
-backPriority = {"Back Primary":["Back Priority 1","Back Priority 2","Back Priority 3","Back Priority 4","Back Priority 5",]}
-backSecondary = {"Back Secondary":["Back Secondary 1","Back Secondary 2","Back Secondary 3","Back Secondary 4","Back Secondary 5","Back Secondary 6","Back Secondary 7","Back Secondary 8","Back Secondary 9","Back Secondary 10","Back Secondary 11","Back Secondary 12","Back Secondary 13","Back Secondary 14","Back Secondary 15","Back Secondary 16","Back Secondary 17","Back Secondary 18","Back Secondary 19","Back Secondary 20"]}
-tricep ={"Tricep Workout":["Skullcrushers 4x12", "Rope pull-downs 4x12", "tricep kick-backs 4x12", "band diamond push-ups 4x12"]}
-bicep = {"Bicep Workout":["bicep 1", "bicep 2", "bicep 3", "bicep 4", "bicep 5"]}
-core = {"Core Workout":["core 1", "core 2", "core 3", "core 4", "core 5"]}
 
+# Define the major muscle groups
+muscle_groups = ['Chest', 'Back', 'Shoulders', 'Legs', 'Arms']
 
+# Define the different workout types
+workout_types = ['Strength', 'Hypertrophy']
 
-todaysExcersize = st.radio("What we doing today? Chest, leg, back? ", ('chest', 'back', 'leg', 'none'))
-todaysSecondaryExcersize = st.radio("Do you want to add these to your workout", ('tricep', 'bicep', 'core', 'none'))
-priorityNumber = st.slider("Number of priority excersizes for chest and back: ", 0, 4)
-secondaryNumber = st.slider("Number of secondary exersizes: ", 0, 4)
-def randomizer(excersize, priority, secondary):
-    if excersize == "chest":
-      if priority > 0:
-          x = pd.DataFrame(chestPriority)
-          y = x.sample(n = priority)
-          st.write(y)
-      if secondary > 0:
-          a = pd.DataFrame(chestSecondary)
-          b = a.sample(n = secondary)
-          st.write(b)
-        #st.markdown(*random.sample(chestPriority,priority), sep = "\n")
-        #st.markdown(*random.sample(chestSecondary,secondary))
-        
-    elif excersize == "leg":
-      x = pd.DataFrame(legPriority)
-      y = x.sample(n = 1)
-      st.write(y)
-      if secondary > 0:
-        a = pd.DataFrame(legSecondary)
-        b = a.sample(n = secondary)
-        st.write(b)
-        #st.markdown(*random.sample(legPriority,priority), sep = "\n")
-        #st.markdown(*random.sample(legSecondary,secondary), sep = "\n")
-    elif excersize == "back":
-      if priority > 0:
-        x = pd.DataFrame(backPriority)
-        y = x.sample(n = priority)
-        st.write(y)
-      if secondary > 0:
-        a = pd.DataFrame(backSecondary)
-        b = a.sample(n = secondary)
-        st.write(b)
-        #st.markdown(*random.sample(backPriority,priority), sep = "\n")
-        #st.markdownq(*random.sample(backSecondary,secondary), sep = "\n")
-    elif excersize == "tricep":
-       x = pd.DataFrame(tricep)
-       y = x.sample(n = 4)
-       st.write(y)
-      #st.write(*random.sample(tricep, 4), sep = "\n")
-    elif excersize == "core":
-       x = pd.DataFrame(core)
-       y = x.sample(n = 4)
-       st.write(y)
-      #st.write(*random.sample(core, 4), sep = "\n")
-    elif excersize == "bicep":
-       x = pd.DataFrame(bicep)
-       y = x.sample(n = 4)
-       st.write(y)
-      #st.write(*random.sample(bicep, 4), sep = "\n"
-    else:
-       st.write("waffles")
-randomizer(todaysExcersize, priorityNumber, secondaryNumber)
-randomizer(todaysSecondaryExcersize, 0, 0)
+# Define the bodybuilding training models for each muscle group and workout type
+training_models = {
+    'Chest': {
+        'Strength': ['Bench Press', 'Incline Press', 'Dumbbell Flyes'],
+        'Hypertrophy': ['Incline Bench Press', 'Cable Crossover', 'Dumbbell Flyes']
+    },
+    'Back': {
+        'Strength': ['Deadlift', 'Barbell Rows', 'Pull-ups'],
+        'Hypertrophy': ['Lat Pulldowns', 'Seated Rows', 'T-Bar Rows']
+    },
+    'Shoulders': {
+        'Strength': ['Military Press', 'Push Press', 'Arnold Press'],
+        'Hypertrophy': ['Dumbbell Shoulder Press', 'Lateral Raises', 'Rear Delt Flyes']
+    },
+    'Legs': {
+        'Strength': ['Squats', 'Deadlift', 'Leg Press'],
+        'Hypertrophy': ['Leg Press', 'Leg Extensions', 'Hamstring Curls']
+    },
+    'Arms': {
+        'Strength': ['Barbell Curl', 'Close-grip Bench Press', 'Skull Crushers'],
+        'Hypertrophy': ['Dumbbell Curl', 'Tricep Pushdowns', 'Cable Curls']
+    }
+}
+
+# Define the user database
+user_db = pd.DataFrame(columns=['Username', 'Max Lift', 'Max Reps'])
+
+# Define the streamlit app
+def app():
+    st.title('Random Workout Generator')
+
+    # Check if the user is logged in
+    if 'username' not in st.session_state:
+        st.write('Please enter a username to log in:')
+        username = st.text_input('Username')
+        st.session_state['username'] = username
+        user_db.loc[len(user_db)] = [username, 0, 0] # Add the user to the database
+
+    # Display the user's data
+    st.write('Welcome, ' + st.session_state['username'])
+    user_data = user_db[user_db['Username'] == st.session_state['username']]
+    st.write('Max Lift: ' + str(user_data['Max Lift'].values[0]))
+    st.write('Max Reps: ' + str(user_data['Max Reps'].values[0]))
+
+    # Allow the user to select their training type and muscle group
+    training_type = st.selectbox('Select your training type:', workout_types)
+    muscle_group = st.selectbox('Select your muscle group:', muscle_groups)
+
+    # Generate a random workout based on the selected training type and muscle group
+    exercises = training_models[muscle_group][
+
+    exercises = training_models[muscle_group][training_type]
+workout = random.sample(exercises, 3) # Select 3 random exercises
+
+# Display the workout to the user
+st.write('Your workout for today:')
+for i, exercise in enumerate(workout):
+    st.write(str(i+1) + '. ' + exercise)
+
+# Allow the user to enter their main lift max and reps
+st.write('Enter your main lift max and reps:')
+max_lift = st.number_input('Max Lift', value=user_data['Max Lift'].values[0])
+max_reps = st.number_input('Max Reps', value=user_data['Max Reps'].values[0])
+
+# Update the user's data
+user_db.loc[user_data.index[0], 'Max Lift'] = max_lift
+user_db.loc[user_data.index[0], 'Max Reps'] = max_reps
+
+# Display the user's data in a dataframe and graph
+st.write('Your data:')
+st.write(user_db)
+st.line_chart(user_db[['Max Lift', 'Max Reps']])
