@@ -72,9 +72,6 @@ if st.button("Generate Workout"):
 
     else:
         for muscle, exercise_list in exercises.items():
-            if muscle == extra_exercises and not add_core_arms:
-                continue
-
             st.write(f"**Target Muscle Group**: {muscle}")
             selected_exercises = random.sample(exercise_list, k=min(2, len(exercise_list)))
             for exercise in selected_exercises:
