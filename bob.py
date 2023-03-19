@@ -71,8 +71,7 @@ def app():
         st.write(str(i+1) + '. ' + exercise)
 
     # Allow the user to enter their main lift max and reps
-    st.write
-'Enter your main lift max and reps:')
+    st.write('Enter your main lift max and reps:')
 col1, col2 = st.columns(2)
 with col1:
     max_lift = st.number_input('Max Lift', value=user_data['Max Lift'].values[0], step=5)
