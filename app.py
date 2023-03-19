@@ -1,6 +1,6 @@
 import streamlit as st
 import random
-Import time
+import time
 def generate_workout(training_type, target_muscle, fitness_level, add_extras):
     workouts = {
         "split": {
