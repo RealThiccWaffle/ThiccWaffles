@@ -82,14 +82,9 @@ else:
 fitness_level = st.selectbox("Choose your fitness level:", ["beginner", "intermediate", "advanced"])
 add_extras = st.selectbox("Add extra exercises (optional):", ["None", "triceps", "biceps", "core"])
 
-if st.button("Generate Workout"):
-    workout = generate_workout(training_type, target_muscle, fitness_level, add_extras)
-    st.write(f"Your {training_type} workout for {target_muscle} (Fitness Level: {fitness_level.capitalize()}):")
-    for exercise, sets, reps in workout:
-        st.write(f"{exercise}: {sets} sets x {reps} reps")
+# ... (rest of the code remains the same)
 
-
-if st.button("Generate Workout"):
+if st.button("Generate Workout", key="generate_workout"):
     workout = generate_workout(training_type, target_muscle, fitness_level, add_extras)
     st.write(f"Your {training_type} workout for {target_muscle} (Fitness Level: {fitness_level.capitalize()}):")
     for exercise, sets, reps in workout:
@@ -97,7 +92,7 @@ if st.button("Generate Workout"):
 
     rest_time = st.slider("Choose your rest time between sets (in seconds):", 30, 180, 60)
 
-    if st.button("Start Workout Timer"):
+    if st.button("Start Workout Timer", key="start_workout_timer"):
         for exercise, sets, reps in workout:
             for current_set in range(1, sets + 1):
                 st.write(f"Performing {exercise} - Set {current_set} of {sets}: {reps} reps")
