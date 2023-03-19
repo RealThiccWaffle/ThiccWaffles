@@ -49,7 +49,8 @@ with col2:
 with col3:
     fitness_level = st.selectbox("Fitness level:", list(sets_and_reps.keys()))
 with col4:
-    extra_exercises = st.selectbox("Add extra exercises:", ["None", "Bicep", "Tricep", "Core"])
+    extra_exercises_options = {"None": None, "Bicep": "Arms", "Tricep": "Arms", "Core": "Core"}
+    extra_exercises = st.selectbox("Add extra exercises:", list(extra_exercises_options.keys()))
 
 # Button to start generating the workout
 if st.button("Generate Workout"):
@@ -66,7 +67,9 @@ if st.button("Generate Workout"):
 
         if extra_exercises != "None":
             st.write("**Extra Exercises**")
-            selected_extra_exercises = random.sample(exercises[extra_exercises], k=min(2, len(exercises[extra_exercises])))
+            selected_extra_exercises = random.sample(
+                exercises[extra_exercises_options[extra_exercises]], k=min(2, len(exercises[extra_exercises_options[extra_exercises]]))
+            )
             for exercise in selected_extra_exercises:
                 st.write(f"{exercise}: {sets} sets of {reps} reps")
 
